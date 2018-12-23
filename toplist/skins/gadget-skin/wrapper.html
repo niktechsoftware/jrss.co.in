@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={$lng->charset}" />
+<title>{$list_name} - {$header}</title>
+<link rel="stylesheet" type="text/css" media="screen" href="{$skins_url}/{$skin_name}/screen.css" />
+<link rel="alternate" href="{$list_url}/{$feed}" type="application/rss+xml" title="{$list_name}" />
+<link rel="stylesheet" type="text/css" href="{$skins_url}/{$skin_name}/styles/styles.css" />
+<script language="javascript" type="text/javascript" src="{$skins_url}/{$skin_name}/scripts/mootools-1.2.1-core.js"></script>
+<script language="javascript" type="text/javascript" src="{$skins_url}/{$skin_name}/scripts/mootools-1.2-more.js"></script>
+<script language="javascript" type="text/javascript" src="{$skins_url}/{$skin_name}/scripts/slideitmoo-1.1.js"></script>
+<script language="javascript" type="text/javascript">
+	window.addEvents({
+		'domready': function(){
+			/* thumbnails example , div containers */
+			new SlideItMoo({
+						overallContainer: 'SlideItMoo_outer',
+						elementScrolled: 'SlideItMoo_inner',
+						thumbsContainer: 'SlideItMoo_items',		
+						itemsVisible: 5,
+						elemsSlide: 3,
+						duration:300,
+						itemsSelector: '.SlideItMoo_element',
+						itemWidth: 158,
+						showControls:1});
+		},
+		
+	});
+
+function clearText(field)
+{
+    if (field.defaultValue == field.value) field.value = '';
+   else if (field.value == '') field.value = field.defaultValue;
+}
+</script>
+<script type="text/javascript">
+function out(username)
+{
+  image = new Image();
+  image.src= '{$list_url}/index.php?a=out&u=' + username;
+}
+</script>
+</head>
+<body>
+<div id="templatemo_site_title_bar_wrapper"><div id="templatemo_site_title_bar">
+<div id="site_title"><h1><a href="{$list_url}/" target="_parent">
+<img src="{$skins_url}/{$skin_name}/logo.png" alt="{$list_name}" /><span>{$header}</span></a></h1></div>
+<div id="search_box"><form action="index.php" method="get">
+<input type="hidden" name="a" value="search" />
+<input type="text" value="{$query}" name="q" size="18" id="searchfield" title="searchfield" onfocus="clearText(this)" onblur="clearText(this)" />
+<input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" value="{$lng->search_header}" /></form></div>
+<div id="templatemo_menu">
+                <ul>
+                  <li><a href="{$list_url}/" class="current first">{$lng->main_menu_rankings}</a></li>
+                  <li><a href="{$list_url}/index.php?a=stats">{$lng->stats_overall}</a></li>
+                  <li><a href="{$list_url}/index.php?a=join">{$lng->main_menu_join}</a></li>
+                  <li><a href="{$list_url}/index.php?a=user_cpl">{$lng->main_menu_user_cp}</a></li>
+                  <li><a href="{$list_url}/index.php?a=admin">Admin</a></li>
+                </ul>    	
+		</div> <!-- end of menu -->
+    </div>
+</div>
+<div id="templatemo_content">
+    <div class="section_w940">
+<center><form action="index.php" method="get">
+{$ranking_methods_menu}
+{$categories_menu}
+{$multiple_pages_menu}
+<input type="submit" value="{$lng->g_form_submit_short}" />
+</form>
+{$featured_member}
+</center><p>{$content}{include "{$skins_url}/{$skin_name}/content.php"}
+{$lng->main_members}: {$num_members}
+{$list_name} - {$powered_by}</center></div>
+<div class="cleaner"></div>
+</div>
+</body>
+</html>

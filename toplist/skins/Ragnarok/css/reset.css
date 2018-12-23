@@ -1,0 +1,60 @@
+@charset "utf-8";
+body,html,div,blockquote,img,label,p,h1,h2,h3,h4,h5,h6,pre,ul,ol,li,dl,dt,dd,form,a,fieldset,input,th,td,cite {
+border:0;
+outline:none;
+margin:0;
+padding:0;
+}
+
+html {
+color:#000;
+font-size:12px;
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+line-height: 19px;
+background: #242424;
+}
+
+h2,h3,h4,h5,h6 {
+font-size:100%;
+margin:0;
+padding:0;
+}
+
+ul,ol {
+list-style:none;
+}
+
+a {
+color:#000;
+text-decoration:none;
+}
+
+a:hover {
+text-decoration:underline;
+}
+
+.floatLeft {
+float:left;
+display:inline;
+padding:.5em .7em .5em 0;
+}
+
+.floatLeftNo {
+float:left;
+display:inline;
+margin:0;
+padding:0;
+}
+
+.floatRight {
+float:right;
+padding:15px 0 15px 15px;
+}
+
+.clear {
+clear:both;
+}
+
+.post-ratings-image {
+margin-right:4px;
+}

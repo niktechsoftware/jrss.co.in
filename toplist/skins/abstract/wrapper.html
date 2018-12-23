@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>{$list_name} - {$header}</title>
+<meta http-equiv="Content-Type" content="text/html;charset={$lng->charset}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{$skins_url}/{$skin_name}/css/style.css" />
+<link rel="stylesheet" type="text/css" href="{$skins_url}/{$skin_name}/css/colour.css" />
+<link rel="alternate" href="{$list_url}/{$feed}" type="application/rss+xml" title="{$list_name}" />
+<script type="text/javascript">
+function out(username)
+{
+  image = new Image();
+  image.src= '{$list_url}/index.php?a=out&u=' + username;
+}
+</script>
+</head>
+<body>
+  <div id="main">
+    <div id="logo"><h1>{$list_name}</h1></div>
+    <div id="menubar">
+      <ul id="menu">
+        <li><a href="{$list_url}/" class="menu">{$lng->main_menu_rankings}</a></li>
+        <li><a href="{$list_url}/index.php?a=join" class="menu">{$lng->main_menu_join}</a></li>
+        <li><a href="{$list_url}/index.php?a=user_cpl" class="menu">{$lng->main_menu_user_cp}</a></li>
+        <li><a href="{$list_url}/index.php?a=stats" class="menu">{$lng->stats_overall}</a></li>
+        <li><a href="{$list_url}/index.php?a=admin" class="menu">Admin</a></li>
+      </ul>
+      <div id="search">
+<form action="index.php" method="get">
+<p>
+<input type="hidden" name="a" value="search" />
+<input class="searchfield" type="text" name="q" size="18" value="{$query}" />
+<input class="searchbutton" type="submit" value="{$lng->search_header}" />
+</p>
+        </form>
+      </div>
+    </div>
+ 
+
+    <div id="site_content">
+      <div id="content">
+<center>
+        <h1>Welcome to {$list_name}</h1>
+{include "{$skins_url}/{$skin_name}/ad_break.html"} 
+<form action="index.php" method="get">
+{$ranking_methods_menu}
+{$categories_menu}
+{$multiple_pages_menu}
+<input type="submit" value="{$lng->g_form_submit_short}" />
+</form> <p>
+</center>
+<p>
+{$content} {include "{$skins_url}/{$skin_name}/content.php"}
+{$lng->main_members}: {$num_members} {$powered_by} 
+<!-- Link must stay on the free version, read the readme.txt -->
+    </div>
+
+  </div>
+
+
+</body>
+</html>

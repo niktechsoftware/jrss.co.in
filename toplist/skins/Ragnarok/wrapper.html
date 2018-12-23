@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={$lng->charset}" />
+<title>{$list_name} - {$header}</title>
+<link href="{$skins_url}/{$skin_name}/css/reset.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="{$skins_url}/{$skin_name}/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link rel="alternate" href="{$list_url}/{$feed}" type="application/rss+xml" title="{$list_name}" />
+
+<script type="text/javascript">
+function out(username)
+{
+  image = new Image();
+  image.src= '{$list_url}/index.php?a=out&u=' + username;
+}
+</script>
+
+
+<script type="text/javascript"
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	//Default Action
+	$(".tab_content").hide(); //Hide all content
+	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+	$(".tab_content:first").show(); //Show first tab content
+	
+	//On Click Event
+	$("ul.tabs li").click(function() {
+		$("ul.tabs li").removeClass("active"); //Remove any "active" class
+		$(this).addClass("active"); //Add "active" class to selected tab
+		$(".tab_content").hide(); //Hide all tab content
+		var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+		$(activeTab).fadeIn(); //Fade in the active content
+		return false;
+	});
+});
+</script>
+
+
+</head>
+<body>
+<div id="wrapper">
+	<div id="container">
+    	<div id="header">
+        	<div id="logo">
+            <a href="{$list_url}/"><img src="{$skins_url}/{$skin_name}/images/logo.gif" alt="{$list_name}" /></a>
+            <h1>Ragnarok Name</h1>
+            </div><!-- logo end -->
+            <div id="serverStatus">
+            	<div class="statusWrap">
+
+<form action="index.php" method="get">
+<input type="hidden" name="a" value="search" />
+<input type="text" name="q" size="55" value="{$query}" />
+<input type="submit" value="{$lng->search_header}" />
+</form>
+                </div>
+            </div><!-- serverStatus end -->
+        </div><!-- header end -->
+      <div id="navigation">
+        	<ul class="nav">
+		<li><a href="{$list_url}/index.php?a=join" class="menu">{$lng->main_menu_join}</a></li>
+		<li><a href="{$list_url}/index.php?a=user_cpl" class="menu">{$lng->main_menu_user_cp}</a></li>
+		<li><a href="{$list_url}/index.php?a=stats" class="menu">{$lng->stats_overall}</a></li>
+		<li><a href="http://forum.kamranweb.com" class="menu">KWF</a></li>
+            </ul>
+        <div class="clear"><!-- --></div>
+        </div><!-- navigation end -->
+        <div id="banner">
+        <div class="welcome_title">
+
+        <img src="{$skins_url}/{$skin_name}/images/welcome_title.gif" alt="Welcome" />
+        	<p>Anything here can be about your website/topsite.</p>
+            </div><!-- welcomeTitle end -->
+
+        <div class="kapraPic">
+        	<img src="{$skins_url}/{$skin_name}/images/kapra_pic.png" alt="Kapra" />
+        </div><!-- kapraPic end -->
+        </div><!-- banner end -->
+ 
+
+        <div id="content">
+       
+           
+<div id="contentRight">
+            	<div id="whyUs">
+
+<center>	<form action="index.php" method="get">
+{$ranking_methods_menu}
+{$categories_menu}
+{$multiple_pages_menu}
+<input type="submit" value="{$lng->g_form_submit_short}" />
+	</form></center>
+
+                	<center><h2 class="arrowDown"><span>{$list_name}</span></h2>
+{$featured_member} 
+</center>
+{$content}
+                </div><!-- whyUS end-->
+
+            </div><!-- contentRight end -->
+{include "{$skins_url}/{$skin_name}/content.php"}</center>
+		<div class="floatLeft footerLeft">
+{$lng->main_executiontime}: {$execution_time} | {$lng->main_queries}: {$num_queries} | {$lng->main_members}: {$num_members}<br />
+		{$list_name} - {$powered_by}
+        </div>
+</div>
+        <div class="clear"><!-- --></div>
+    </div><!-- footerContent end -->
+</div>
+</body>
+</html>
